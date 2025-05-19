@@ -1,0 +1,68 @@
+# 应用全局配置
+
+# 服务器配置
+server:
+  host: "0.0.0.0"
+  port: 5000
+  debug: true
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "logs/app.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# 数据路径配置
+paths:
+  raw_documents: "data/raw_documents/"
+  processed_documents: "data/processed/"
+  index_db: "data/index_db/"
+  models: "models/"
+  
+# 硬件加速配置
+hardware:
+  use_gpu: true
+  gpu_id: 0  # 使用的GPU ID，多GPU时可设置
+  mixed_precision: true  # 是否使用混合精度
+  batch_size: 32  # 批处理大小
+  max_threads: 4  # CPU线程数
+  
+# 检索引擎配置
+retrieval:
+  default_algorithm: "tfidf"  # tfidf, vector_space, boolean, neural
+  max_results: 20
+  min_score: 0.3
+  enable_spell_check: true
+  vector_dim: 768  # 向量维度，用于神经网络模型
+  
+# 分词和处理配置
+text_processing:
+  language: "chinese"  # chinese, english
+  enable_stopwords: true
+  enable_stemming: true
+  min_token_length: 2
+  
+# 评估指标配置  
+evaluation:
+  metrics: ["precision", "recall", "f1", "response_time", "error_rate"]
+  test_sample_size: 100
+  
+# 多模态配置（选做）
+multimodal:
+  enabled: false
+  model_path: "models/multimodal/base_model"
+  model_type: "clip"  # clip, vit, resnet
+  use_gpu: true
+  quantization: false  # 是否进行量化加速
+  
+# RAG配置（选做）
+rag:
+  enabled: false
+  model_path: "models/rag/base_model"
+  embedding_model: "text2vec-base-chinese"  # 可选: text2vec-base, text2vec-base-chinese, sentence-transformers
+  llm_model: "chatglm-6b"  # 可选: chatglm-6b, llama-7b-cn, qwen-7b
+  max_tokens: 1024
+  use_gpu: true
+  max_context_length: 4096
+  temperature: 0.7
+  top_p: 0.95

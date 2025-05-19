@@ -1,0 +1,48 @@
+# 基础依赖
+Flask==2.3.3
+Flask-WTF==1.1.1
+Werkzeug==2.3.7
+
+# 数据处理和NLP
+nltk==3.8.1
+gensim==4.3.1
+scikit-learn==1.3.0
+numpy==1.24.4
+pandas==2.0.3
+
+# 文档解析
+python-docx==0.8.11
+PyPDF2==3.0.1
+openpyxl==3.1.2
+beautifulsoup4==4.12.2
+html5lib==1.1
+lxml==4.9.3
+
+# 爬虫相关
+requests==2.31.0
+scrapy==2.10.0
+
+# 可视化
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.16.1
+
+# 配置和日志
+pyyaml==6.0.1
+colorlog==6.7.0
+
+# 选做模块依赖
+# 多模态检索
+pillow==10.0.0
+transformers==4.32.1
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.2
+
+# GPU加速
+numba==0.57.1
+cupy-cuda12x==12.2.0  # 根据CUDA版本选择合适的版本
+faiss-gpu==1.7.4  # 替换faiss-cpu为GPU版本
+
+# RAG
+langchain==0.0.267

@@ -1,0 +1,60 @@
+# 检索规则配置
+
+# 基础规则
+basic_rules:
+  # 排除规则 - 不检索包含以下词汇的文档
+  exclusion_words: 
+    - "广告"
+    - "赞助内容"
+    - "confidential"
+  
+  # 权重规则 - 包含这些词汇的文档权重提高
+  boost_words:
+    - 
+      words: ["重要", "关键", "核心"]
+      weight: 1.5
+    -
+      words: ["紧急", "立即"]
+      weight: 2.0
+  
+  # 时间规则 - 最近文档权重提高
+  time_boost:
+    enabled: true
+    decay_rate: 0.1  # 每月衰减率
+    max_age_months: 24  # 超过此月数不再考虑时间因素
+
+# 领域特定规则
+domain_rules:
+  # 技术文档规则
+  technical:
+    boost_words: ["算法", "框架", "架构", "代码", "开发"]
+    weight: 1.3
+  
+  # 业务文档规则
+  business:
+    boost_words: ["方案", "规划", "战略", "市场", "客户"]
+    weight: 1.2
+
+# 自定义规则语法
+custom_rule_syntax:
+  operators: ["AND", "OR", "NOT", "NEAR", "BEFORE", "AFTER"]
+  wildcards: ["*", "?"]
+  proximity_default: 5  # NEAR操作符默认距离
+  field_search: true    # 支持field:value语法
+
+# 高级规则
+advanced_rules:
+  # 文档类型权重
+  document_type_weights:
+    pdf: 1.0
+    docx: 1.0
+    html: 0.9
+    txt: 0.8
+    xlsx: 0.7
+  
+  # 字段权重
+  field_weights:
+    title: 2.0
+    abstract: 1.5
+    content: 1.0
+    metadata: 0.7
